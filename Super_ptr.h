@@ -33,4 +33,12 @@ Super_ptr& operator=(const Super_ptr&) = delete;
         return *this;
     }
     T* get() const { return data; }
+
+    T& operator[](std::size_t index) {
+        return data[index];
+    }
+
+    const T& operator[](std::size_t index) const {
+        return data[index];
+    }
 };

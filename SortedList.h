@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
-
+#include  "Super_ptr.h"
 namespace mtm {
 
     template <typename T>
@@ -10,13 +10,16 @@ namespace mtm {
 
     class SortedList {
      T value ;
-    SortedList next ;
+    Super_ptr<T[]> list ;
+        int size;
     public:
 SortedList();
         SortedList(T value);
         ~SortedList();
-        SortedList operator=(const SortedList& list);
-        SortedList operator=(T value);
+        SortedList& operator=(const SortedList& list);
+        SortedList& operator=( T  value);
+ SortedList(const SortedList& sorted_list);
+void insert ( SortedList<T> &sorted_list,const T value) ;
 
         /**
          *
@@ -41,8 +44,9 @@ SortedList();
          * 11. filter - returns a new list with elements that satisfy a given condition
          * 12. apply - returns a new list with elements that were modified by an operation
          */
-
+int length () const;
     };
+
 
     template <class T>
     class SortedList<T>::ConstIterator {
