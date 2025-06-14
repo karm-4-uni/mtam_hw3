@@ -6,8 +6,18 @@
 namespace mtm {
 
     template <typename T>
+
+
     class SortedList {
+     T value ;
+    SortedList next ;
     public:
+SortedList();
+        SortedList(T value);
+        ~SortedList();
+        SortedList operator=(const SortedList& list);
+        SortedList operator=(T value);
+
         /**
          *
          * the class should support the following public interface:
