@@ -13,13 +13,18 @@ namespace mtm {
     Super_ptr<T[]> list ;
         int size;
     public:
+
 SortedList();
         SortedList(T value);
         ~SortedList();
         SortedList& operator=(const SortedList& list);
         SortedList& operator=( T  value);
  SortedList(const SortedList& sorted_list);
-void insert ( SortedList<T> &sorted_list,const T value) ;
+void insert (const T value) ;
+
+       class ConstIterator;
+        ConstIterator begin() const;
+         ConstIterator end() const;
 
         /**
          *
@@ -50,6 +55,19 @@ int length () const;
 
     template <class T>
     class SortedList<T>::ConstIterator {
+        T* current;
+        friend class  SortedList<T>;
+    public:
+        ConstIterator(T* ptr) : current(ptr) {}
+        ConstIterator(const ConstIterator&) = default;
+        ConstIterator& operator=(const ConstIterator&) = default;
+        ~ConstIterator() = default;
+        const T& operator*() const { return *current; }
+        ConstIterator& operator++() { ++current; return *this; }
+        bool operator!=(const ConstIterator& other) const {
+            return current != other.current;
+        }
+    };
     /**
      * the class should support the following public interface:
      * if needed, use =defualt / =delete
@@ -67,5 +85,5 @@ int length () const;
      *
      */
     };
-}
+
 

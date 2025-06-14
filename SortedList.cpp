@@ -70,19 +70,20 @@ int mtm::SortedList<T>::length() const {
 }
 template <class T>
  void  mtm::SortedList<T>::insert(const T value) {
-    int size = this->size + 1;
+    int size = this->size ;
     int i = 0 , j = 0;
+    bool inserted = false ;
     Super_ptr<T[]> newlsit(new T[size+1]);
     if(size == 1) {
         newlsit[0] = value;
     } else {
    while (j < size && i < size + 1   ) {
-       if(this.list.get()[j] < value ) {
+       if(this.list[j] < value && !inserted ) {
            newlsit[i]= std::move(value);
-
+           inserted = true;
        }
        else {
-           newlsit[i] = std::move(this.list.get()[j]);
+           newlsit[i] = std::move(this.list[j]);
            j++;
        }
        i++;
@@ -90,4 +91,13 @@ template <class T>
 
     }
 
+}
+template<typename T>
+typename   mtm::SortedList<T>::ConstIterator mtm::SortedList<T>::begin() const {
+
+    return ConstIterator(list.get());
+}
+template<typename T>
+typename   mtm::SortedList<T>::ConstIterator mtm::SortedList<T>::end() const {
+    return ConstIterator(list.get() + size);
 }
