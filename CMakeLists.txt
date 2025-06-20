@@ -13,6 +13,5 @@ add_executable(mtam_hw3
     Task.cpp
     Task.h
     TaskManager.h
-        Super_ptr.h
         SortedList.cpp
 )

@@ -10,10 +10,9 @@ mtm::SortedList<T>::SortedList() {
 
 template<typename T>
 mtm::SortedList<T>::SortedList(T value) {
-    this->list= new Super_ptr<T>[1];
+    this->list= new T[1];
          list[0] = value;
     size = 1 ;
-
 }
 
 template<typename T>
@@ -23,15 +22,16 @@ mtm::SortedList<T>& mtm::SortedList<T>::operator=(const mtm::SortedList<T> &tarl
     }
     size = tarlist.size;
     if (tarlist.size != 0) {
-        Super_ptr<T[]> newlist = new Super_ptr<T[size]>;
+        T* newlist = new T[size];
         for (int i = 0 ; i < this->size ; i++ ) {
-            newlist[i] = move(new T(*tarlist->list[i].get()));
+            newlist[i] =  this->list[i];
         }
-        this->list = std::move(newlist);
+        delete[] this->list;
+        this->list = newlist;
         return *this;
     } else {
-       Super_ptr<T>* newlist = Super_ptr<T>(nullptr);
-         this->list = std::move(newlist);
+        delete[] this->list;
+         this->list = nullptr;
         return *this;
     }
 }
@@ -39,13 +39,14 @@ mtm::SortedList<T>& mtm::SortedList<T>::operator=(const mtm::SortedList<T> &tarl
 template<typename T>
 mtm::SortedList<T>& mtm::SortedList<T>::operator=(T value) {
 
-if(this->size == 1 && this->list.get() == value) {
+if(this->size == 1 && this->list[0] == value) {
     return *this;
 }
     size = 1;
-    Super_ptr<T[]> newlist(new T[1]);
+    T* newlist(new T[1]);
     newlist[0] = value;
-    list = std::move(newlist);
+    delete[] this->list;
+    list = newlist;
 
     return *this;
 }
@@ -55,11 +56,11 @@ mtm::SortedList<T>::SortedList(const SortedList& other)
 {
     if (size == 0) return;
 
-    Super_ptr<T[]> newlsit(new T[size]);
+    T* newlsit = new T[size];
     for (int i = 0; i < size; ++i) {
          newlsit[i] = other.list[i];
     }
-    list = std::move(newlsit);
+    list = newlsit;
 }
 template<typename T>
 mtm::SortedList<T>::~SortedList() {
@@ -73,31 +74,64 @@ template <class T>
     int size = this->size ;
     int i = 0 , j = 0;
     bool inserted = false ;
-    Super_ptr<T[]> newlsit(new T[size+1]);
-    if(size == 1) {
-        newlsit[0] = value;
-    } else {
+   T* newlsit(new T[size+1]);
+
    while (j < size && i < size + 1   ) {
        if(this.list[j] < value && !inserted ) {
-           newlsit[i]= std::move(value);
+           newlsit[i]= value;
            inserted = true;
        }
        else {
-           newlsit[i] = std::move(this.list[j]);
+           newlsit[i] = this.list[j];
            j++;
        }
        i++;
    }
-
+    if (!inserted) {
+        newlsit[size] = value;
     }
+    delete[] list;
+    list = newlsit;
+    size++;
 
 }
 template<typename T>
 typename   mtm::SortedList<T>::ConstIterator mtm::SortedList<T>::begin() const {
 
-    return ConstIterator(list.get());
+    return ConstIterator(list);
 }
 template<typename T>
 typename   mtm::SortedList<T>::ConstIterator mtm::SortedList<T>::end() const {
-    return ConstIterator(list.get() + size);
+    return ConstIterator(list + size);
+}
+
+template<typename T>
+void mtm::SortedList<T>::remove(ConstIterator it) {
+    int index = it.current -  list ;
+    if(index >= this->size || index < 0) {
+        throw index;
+    }
+    T* newlist = new T[size - 1];
+    int j = 0;
+    for (int i = 0 ; i < size  ;i++ ) {
+        if(i != index) {
+             newlist[j] = list[i];
+            j++;
+        }
+
+    }
+    delete [] this->list;
+    this->list= newlist;
+this->size-=1;
+}
+template<typename T>
+mtm::SortedList<T> mtm::SortedList<T>::filter(bool (*predicate)(const T &)) const {
+    SortedList<T> new_list ;
+    for(int i = 0 ; i < this->size ; i++) {
+        if(predicate(list[i])) {
+            new_list.insert(list[i]);
+        }
+    }
+
+    return new_list;
 }

@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
-#include  "Super_ptr.h"
+
 namespace mtm {
 
     template <typename T>
@@ -10,7 +10,7 @@ namespace mtm {
 
     class SortedList {
      T value ;
-    Super_ptr<T[]> list ;
+     T* list ;
         int size;
     public:
 
@@ -26,6 +26,9 @@ void insert (const T value) ;
         ConstIterator begin() const;
          ConstIterator end() const;
 
+ void remove(ConstIterator it);
+
+        SortedList<T> filter (bool (*predicate)(const T&)) const;
         /**
          *
          * the class should support the following public interface:
