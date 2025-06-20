@@ -29,6 +29,7 @@ void insert (const T value) ;
  void remove(ConstIterator it);
 
         SortedList<T> filter (bool (*predicate)(const T&)) const;
+        SortedList<T> apply (T (*predicate)(const T&)) const;
         /**
          *
          * the class should support the following public interface:

@@ -125,12 +125,22 @@ void mtm::SortedList<T>::remove(ConstIterator it) {
 this->size-=1;
 }
 template<typename T>
-mtm::SortedList<T> mtm::SortedList<T>::filter(bool (*predicate)(const T &)) const {
+mtm::SortedList<T> mtm::SortedList<T>::filter(bool (*predicate)(const T&)) const {
     SortedList<T> new_list ;
     for(int i = 0 ; i < this->size ; i++) {
         if(predicate(list[i])) {
             new_list.insert(list[i]);
         }
+    }
+
+    return new_list;
+}
+template<typename T>
+mtm::SortedList<T> mtm::SortedList<T>::apply(T (*predicate)(const T&)) const {
+    SortedList<T> new_list;
+
+    for(int i = 0 ; i < this->size ; i++) {
+            new_list.insert(predicate(list[i]));
     }
 
     return new_list;
