@@ -105,6 +105,7 @@ typename   mtm::SortedList<T>::ConstIterator mtm::SortedList<T>::end() const {
     return ConstIterator(list + size);
 }
 
+
 template<typename T>
 void mtm::SortedList<T>::remove(ConstIterator it) {
     int index = it.current -  list ;
@@ -145,3 +146,11 @@ mtm::SortedList<T> mtm::SortedList<T>::apply(T (*predicate)(const T&)) const {
 
     return new_list;
 }
+template<typename T>
+ T& mtm::SortedList<T>::operator[](int i ) {
+     if(i>0 && i < size) {
+         return this->list[i];
+     }
+
+     //add expction
+ }

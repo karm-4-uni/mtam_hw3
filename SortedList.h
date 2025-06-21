@@ -30,6 +30,8 @@ void insert (const T value) ;
 
         SortedList<T> filter (bool (*predicate)(const T&)) const;
         SortedList<T> apply (T (*predicate)(const T&)) const;
+
+       T& SortedList& operator[](int i);
         /**
          *
          * the class should support the following public interface:

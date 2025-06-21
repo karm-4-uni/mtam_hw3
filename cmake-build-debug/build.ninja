@@ -77,6 +77,13 @@ build CMakeFiles/mtam_hw3.dir/SortedList.cpp.obj: CXX_COMPILER__mtam_hw3_unscann
   OBJECT_DIR = CMakeFiles\mtam_hw3.dir
   OBJECT_FILE_DIR = CMakeFiles\mtam_hw3.dir
 
+build CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj: CXX_COMPILER__mtam_hw3_unscanned_Debug C$:/Users/Admin/Documents/uni/mtam_hw3/TaskManager.cpp || cmake_object_order_depends_target_mtam_hw3
+  DEP_FILE = CMakeFiles\mtam_hw3.dir\TaskManager.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Admin/Documents/uni/mtam_hw3/.
+  OBJECT_DIR = CMakeFiles\mtam_hw3.dir
+  OBJECT_FILE_DIR = CMakeFiles\mtam_hw3.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target mtam_hw3
@@ -85,7 +92,7 @@ build CMakeFiles/mtam_hw3.dir/SortedList.cpp.obj: CXX_COMPILER__mtam_hw3_unscann
 #############################################
 # Link the executable mtam_hw3.exe
 
-build mtam_hw3.exe: CXX_EXECUTABLE_LINKER__mtam_hw3_Debug CMakeFiles/mtam_hw3.dir/main.cpp.obj CMakeFiles/mtam_hw3.dir/Person.cpp.obj CMakeFiles/mtam_hw3.dir/Task.cpp.obj CMakeFiles/mtam_hw3.dir/SortedList.cpp.obj
+build mtam_hw3.exe: CXX_EXECUTABLE_LINKER__mtam_hw3_Debug CMakeFiles/mtam_hw3.dir/main.cpp.obj CMakeFiles/mtam_hw3.dir/Person.cpp.obj CMakeFiles/mtam_hw3.dir/Task.cpp.obj CMakeFiles/mtam_hw3.dir/SortedList.cpp.obj CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\mtam_hw3.dir
