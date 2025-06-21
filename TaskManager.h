@@ -73,4 +73,6 @@ public:
      * @brief Prints all tasks assigned to all employees.
      */
     void printAllTasks() const;
+private:
+ void printTask(TaskType type , int flag = 0) const;
 };
