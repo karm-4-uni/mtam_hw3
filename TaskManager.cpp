@@ -28,7 +28,7 @@ void TaskManager::completeTask(const string &personName) {
 
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
     if(priority < 0 ) {
-        int index = -1 , i = 0 , j=0;
+        int  i = 0 ;
         for (SortedList<Person>::ConstIterator it = persons.begin(); it != persons.end();++it , i++) {
             SortedList<Task>::ConstIterator it2 = (*it).getTasks().begin();
             SortedList<Task> new_tasks;
@@ -59,7 +59,7 @@ void TaskManager::printAllEmployees() const {
 }
 
 void TaskManager::printAllTasks() const {
-    TaskType type;
+    TaskType type = TaskType::General ;
     printTask(type , 0);
 
 }
