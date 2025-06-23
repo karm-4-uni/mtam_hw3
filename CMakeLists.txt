@@ -13,6 +13,7 @@ add_executable(mtam_hw3
     Task.cpp
     Task.h
     TaskManager.h
-        SortedList.cpp
         TaskManager.cpp
+        Node.h
+        maintest.cpp
 )

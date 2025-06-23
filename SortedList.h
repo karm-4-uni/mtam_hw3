@@ -3,93 +3,152 @@
 #include <cassert>
 #include <iostream>
 #include <stdexcept>
-
+#include  <Node.h>
 namespace mtm {
 
     template <typename T>
 
 
     class SortedList {
-     T* list ;
-        int size;
-    public:
+     Node<T>* list ;
+       // int size;
 
+
+        void clear() {
+            Node<T>* curr = list;
+            while (curr != nullptr) {
+                Node<T>* next = curr->getNext();
+                delete curr;
+                curr = next;
+            }
+            list = nullptr;
+        }
+    public:
+        /**
+       // * constructors and destructor:
+
+               * 2. copy constructor
+               * 3. operator= - assignment operator
+
+      */
+        //* 1. SortedList() - creates an empty list.
 SortedList() {
-  //  this->list= nullptr;
-    size = 0 ;
+    list = new Node<T>();
+
 }
+
        explicit  SortedList(T value) {
            this->list= new T[1];
            list[0] = value;
-           size = 1 ;
-       }
-        ~SortedList() = default;
-        SortedList& operator=(const SortedList& tarlist) {
-            if (this == &tarlist) {
-                return *this;
-            }
-            size = tarlist.size;
-            if (tarlist.size != 0) {
-                T* newlist = nullptr;
-                for (int i = 0 ; i < this->size ; i++ ) {
-                    newlist[i] =  this->list[i];
-                }
-                delete[] this->list;
-                this->list = newlist;
-                return *this;
-            } else {
-                delete[] this->list;
-                this->list = nullptr;
-                return *this;
-            }
-        }
-        // SortedList& operator=( T  value) {
-        //     if(this->size == 1 && this->list[0] == value) {
-        //         return *this;
-        //     }
-        //     size = 1;
-        //     T* newlist(new T[1]);
-        //     newlist[0] = value;
-        //     delete[] this->list;
-        //     list = newlist;
-        //
-        //     return *this;
-        // }
-        SortedList(const SortedList& other) : list(nullptr), size(other.size)
-        {
-            if (size == 0) return;
 
-            T* newlsit = new T[size];
-            for (int i = 0; i < size; ++i) {
-                newlsit[i] = other.list[i];
-            }
-            list = newlsit;
+       }
+        int length () {
+    if(list == nullptr) {
+        return  0;
+    }
+    int length = 0;
+    Node<T>* ptr = list ;
+    while (ptr != nullptr) {
+        length++;
+        ptr = ptr->getNext();
+    }
+
+}
+        //* 4. ~SortedList() - destructor
+        ~SortedList() {
+    Node<T>* new_node = list;
+    while (new_node != nullptr) {
+        Node<T>* nodeDel = new_node;
+        nodeDel = new_node->getNext();
+        delete nodeDel;
+    }
+}
+
+
+        SortedList& operator=(const SortedList& other) {
+    if (this == &other) return *this;
+    if (!other.list) {
+        this->list = nullptr;
+
+    } else {
+        if(list != nullptr) {
+          clear();
         }
+        Node<T>* S = new Node<T>(other.list->getValue());;
+        Node<T>* tar = S;
+        Node<T>* D = other.list;
+        while (D->getNext() != nullptr) {
+            D = D->getNext();
+            S->add(D->getValue());
+            S=S->getNext();
+        }
+
+        this->list= tar ;
+    }
+return  *this;
+        }
+
+        SortedList(const SortedList& other) {
+    if (!other.list) {
+        this->list = nullptr;
+
+    } else {
+        Node<T>* S = new Node<T>(other.list->getValue());;
+        Node<T>* tar = S;
+        Node<T>* D = other.list;
+        while (D->getNext() != nullptr) {
+            D = D->getNext();
+            S->add(D->getValue());
+            S=S->getNext();
+        }
+
+        this->list= tar ;
+    }
+
+        }
+        SortedList(const Node<T>* other)
+{
+    if (!other) {
+        this->list = nullptr;
+    } else {
+        Node<T>* S = new Node<T>(other->value);;
+Node<T>* new_node = S ;
+        Node<T>* D = other;
+        while (D->getNext() != nullptr) {
+  D =D->getNext();
+            S->add(D->getValue());
+            S = S->getNext();
+
+        }
+this->list = new_node ;
+    }
+
+}
 
 void insert (const T value) {
-            int size = this->size ;
-            int i = 0 , j = 0;
-            bool inserted = false ;
-            T* newlsit = nullptr;
 
-            while (j < size && i < size + 1   ) {
-              const  T val = this->list[j] ;
+            bool inserted = false ;
+            Node<T>* new_node = new Node<T>() ;
+    Node<T>* temlist = list;
+    Node<T>* temnew = new_node;
+            while (temlist != nullptr   ) {
+               T val = temlist->getValue() ;
                 if(value > val  && !inserted ) {
-                    newlsit[i]= value;
+                    temnew->add(value);
+                    temnew = temnew->getNext();
                     inserted = true;
                 }
                 else {
-                    newlsit[i] = this->list[j];
-                    j++;
+                    temnew->add(temlist->getValue());
+
                 }
-                i++;
+               temlist = temlist->getNext();
             }
             if (!inserted) {
-                newlsit[size] = value;
+                temnew->add(value);
             }
-            delete[] list;
-            list = newlsit;
-            this->size++;
+         clear();
+            list = new_node;
         }
 
        class ConstIterator;
@@ -97,74 +156,91 @@ void insert (const T value) {
             return ConstIterator(list);
         }
          ConstIterator end() const {
-            return ConstIterator(list + size);
+            return ConstIterator( nullptr);
         }
 
+        //* 9. remove - removes an element from the list
  void remove(ConstIterator it) {
-            int index = it.current -  list ;
-            if(index >= this->size || index < 0) {
-                throw index;
+            Node<T>* tar = it.current;
+            if (!tar) {
+                throw std::logic_error("Invalid iterator");
             }
-            T* newlist = nullptr ;
-            int j = 0;
-            for (int i = 0 ; i < size  ;i++ ) {
-                if(i != index) {
-                    newlist[j] = list[i];
-                    j++;
-                }
 
+            Node<T>* new_list = new Node<T>();
+            Node<T>* ptr_old = list;
+            Node<T>* ptr_new = new_list;
+
+            bool found = false;
+            while ( ptr_old != nullptr) {
+                if ( ptr_old  == tar && !found) {
+                    found = true; // skip this node
+                } else {
+                    ptr_new->add( ptr_old ->getValue());
+                    ptr_new = ptr_new->getNext();
+                }
+                 ptr_old =  ptr_old ->getNext();
             }
-            delete [] this->list;
-            this->list= newlist;
-            this->size-=1;
+            clear();
+            list = new_list;
+
         }
 
-        SortedList<T> filter (bool (*predicate)(const T&)) const {
-            SortedList<T> new_list ;
-            for(int i = 0 ; i < this->size ; i++) {
-                if(predicate(list[i])) {
-                    new_list.insert(list[i]);
-                }
-            }
 
-            return new_list;
-        }
+
+//* 12. apply - returns a new list with elements that were modified by an operation
         SortedList<T> apply (T (*predicate)(const T&)) const {
             SortedList<T> new_list;
-
-            for(int i = 0 ; i < this->size ; i++) {
-                new_list.insert(predicate(list[i]));
+            Node<T>* ptr = list;
+            while (ptr != nullptr) {
+                    new_list.insert(predicate(ptr->getValue()));
+                ptr = ptr->getNext();
             }
+            return new_list;
+        }
 
+       // 11. filter - returns a new list with elements that satisfy a given condition
+        SortedList<T> filter (bool (*predicate)(const T&)) const {
+            SortedList<T> new_list;
+            Node<T>* ptr = list;
+            while (ptr != nullptr) {
+                if(predicate(ptr->getValue())) {
+                     new_list.insert(ptr->getValue());
+                }
+                ptr = ptr->getNext();
+            }
             return new_list;
         }
 
 
-
-        T& operator[](int i) {
-            if(i>0 && i < size) {
-                return this->list[i];
+        T& operator[](int index) {
+            if (index < 0 || index >= length()) {
+                throw index;
+                //add expction
             }
-            return this->list[i];
-            //add expction
-        }
-      const  T& operator[](int i) const {
-          if(i>0 && i < size) {
-              return this->list[i];
-          }
+            Node<T>* ptr = list;
+            for (int i = 0; i < index; ++i) {
+                ptr = ptr->getNext();
+            }
+            return ptr->getValue();
 
-          //add expction
-      }
+        }
+        const  T& operator[](int index) const {
+            if (index < 0 || index >= length()) {
+                throw index;
+            }
+            Node<T>* ptr = list;
+            for (int i = 0; i < index; ++i) {
+                ptr = ptr->getNext();
+            }
+            return ptr->getValue();
+
+        }
         /**
          *
          * the class should support the following public interface:
          * if needed, use =defualt / =delete
          *
-         * constructors and destructor:
-         * 1. SortedList() - creates an empty list.
-         * 2. copy constructor
-         * 3. operator= - assignment operator
-         * 4. ~SortedList() - destructor
+
          *
          * iterator:
          * 5. class ConstIterator;
@@ -178,23 +254,26 @@ void insert (const T value) {
          * 11. filter - returns a new list with elements that satisfy a given condition
          * 12. apply - returns a new list with elements that were modified by an operation
          */
-int length () const {
-            return  this->size;
-        }
+
     };
 
 
-    template <class T>
-    class SortedList<T>::ConstIterator {
-        T* current;
-        friend class  SortedList<T>;
+    template <typename T>
+   class SortedList<T>::ConstIterator {
+        Node<T>* current;
+
     public:
-        ConstIterator(T* ptr) : current(ptr) {}
+        explicit ConstIterator(Node<T>* ptr) : current(ptr) {}
         ConstIterator(const ConstIterator&) = default;
         ConstIterator& operator=(const ConstIterator&) = default;
         ~ConstIterator() = default;
-        const T& operator*() const { return *current; }
-        ConstIterator& operator++() { ++current; return *this; }
+        const T& operator*() const {
+            return current->getValue();
+        }
+        ConstIterator& operator++() {
+            current = current->getNext();
+            return *this;
+        }
         bool operator!=(const ConstIterator& other) const {
             return current != other.current;
         }
@@ -216,5 +295,4 @@ int length () const {
      *
      */
     };
-#include "SortedList.cpp"
 
