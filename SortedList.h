@@ -33,16 +33,11 @@ namespace mtm {
       */
         //* 1. SortedList() - creates an empty list.
 SortedList() {
-    list = new Node<T>();
+    list = nullptr;
 
 }
 
-       explicit  SortedList(T value) {
-           this->list= new T[1];
-           list[0] = value;
-
-       }
-        int length () {
+     const   int length () const{
     if(list == nullptr) {
         return  0;
     }
@@ -52,22 +47,20 @@ SortedList() {
         length++;
         ptr = ptr->getNext();
     }
-
+return length;
 }
+
+
+
         //* 4. ~SortedList() - destructor
         ~SortedList() {
-    Node<T>* new_node = list;
-    while (new_node != nullptr) {
-        Node<T>* nodeDel = new_node;
-        nodeDel = new_node->getNext();
-        delete nodeDel;
-    }
+    clear();
 }
 
 
         SortedList& operator=(const SortedList& other) {
     if (this == &other) return *this;
-    if (!other.list) {
+    if (other.list == nullptr) {
         this->list = nullptr;
 
     } else {
@@ -126,11 +119,20 @@ this->list = new_node ;
 }
 
 void insert (const T value) {
+if(list == nullptr) {
+    list->add(value);
+} else {
+  bool inserted = false ;
+    Node<T>* new_node;
+    if(list->getValue() > value) {
+         new_node = new Node<T>(list->getValue()) ;
+    } else {
+        new_node = new Node<T>(value) ;
+        inserted = true ;
+    }
 
-            bool inserted = false ;
-            Node<T>* new_node = new Node<T>() ;
     Node<T>* temlist = list;
-    Node<T>* temnew = new_node;
+    Node<T>* temnew = new_node->getNext();
             while (temlist != nullptr   ) {
                T val = temlist->getValue() ;
                 if(value > val  && !inserted ) {
@@ -149,6 +151,10 @@ void insert (const T value) {
             }
          clear();
             list = new_node;
+
+
+}
+
         }
 
        class ConstIterator;
@@ -165,8 +171,14 @@ void insert (const T value) {
             if (!tar) {
                 throw std::logic_error("Invalid iterator");
             }
-
-            Node<T>* new_list = new Node<T>();
+            Node<T>* new_list ;
+if(tar == list) {
+    new_list = list;
+    list = list->getNext();
+    delete new_list;
+} else {
+    new_list = new Node<T>(list->getValue());
+}
             Node<T>* ptr_old = list;
             Node<T>* ptr_new = new_list;
 
@@ -261,7 +273,7 @@ void insert (const T value) {
     template <typename T>
    class SortedList<T>::ConstIterator {
         Node<T>* current;
-
+friend  SortedList< T>;
     public:
         explicit ConstIterator(Node<T>* ptr) : current(ptr) {}
         ConstIterator(const ConstIterator&) = default;

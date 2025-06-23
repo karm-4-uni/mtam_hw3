@@ -18,15 +18,8 @@ class  Node {
 Status stat;
 
 public:
-    Node() {
-        stat = empty;
-        this->next= nullptr;
-    }
-    Node (T value) {
-        stat = full ;
-        this->next= nullptr;
-        this->value = value ;
-    }
+    Node() = delete ;
+    Node(const T& value) : value(value), next(nullptr), stat(full) {}
     void add(T value) {
         if(stat == empty) {
             this->value = value;
@@ -79,7 +72,13 @@ public:
         }
 
     }
-    T getValue() {
+    T& getValue() {
+        if(stat == full) {
+            return  value;
+        }
+        throw std::logic_error("Accessing value of empty node");
+    }
+    const T getValue() const {
         if(stat == full) {
             return  value;
         }
