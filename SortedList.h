@@ -119,43 +119,49 @@ this->list = new_node ;
 }
 
 void insert (const T value) {
-if(list == nullptr) {
-    list->add(value);
-} else {
-  bool inserted = false ;
-    Node<T>* new_node;
-    if(list->getValue() > value) {
-         new_node = new Node<T>(list->getValue()) ;
-    } else {
-        new_node = new Node<T>(value) ;
-        inserted = true ;
+    bool inserted = false ;
+    Node<T>* new_node = new Node<T>(value);
+    if (list == nullptr) {
+        list = new_node;
+        return;
+    }
+   const T VE = list->getValue();
+    Node<T>* new_list = nullptr;
+    Node<T>* tail = nullptr;
+    Node<T>* curr = list;
+
+    while (curr != nullptr) {
+        if (!inserted && curr->getValue() > value) {
+            Node<T>* n = new Node<T>(value);
+            if (!new_list) new_list = tail = n;
+            else {
+                tail->setNext(n);
+                tail = n;
+            }
+            inserted = true;
+        }
+
+        Node<T>* n = new Node<T>(curr->getValue());
+        if (!new_list) new_list = tail = n;
+        else {
+            tail->setNext(n);
+            tail = n;
+        }
+
+        curr = curr->getNext();
     }
 
-    Node<T>* temlist = list;
-    Node<T>* temnew = new_node->getNext();
-            while (temlist != nullptr   ) {
-               T val = temlist->getValue() ;
-                if(value > val  && !inserted ) {
-                    temnew->add(value);
-                    temnew = temnew->getNext();
-                    inserted = true;
-                }
-                else {
-                    temnew->add(temlist->getValue());
+    if (!inserted) {
+        Node<T>* n = new Node<T>(value);
+        if (!new_list) new_list = n;
+        else tail->setNext(n);
+    }
 
-                }
-               temlist = temlist->getNext();
-            }
-            if (!inserted) {
-                temnew->add(value);
-            }
-         clear();
-            list = new_node;
-
+    clear();        // delete old list
+    list = new_list;
 
 }
 
-        }
 
        class ConstIterator;
         ConstIterator begin() const {
@@ -266,7 +272,19 @@ if(tar == list) {
          * 11. filter - returns a new list with elements that satisfy a given condition
          * 12. apply - returns a new list with elements that were modified by an operation
          */
-
+        //delet later
+        void print(std::ostream& os = std::cout, const char* sep = " ") const {
+            Node<T>* ptr = list;
+            bool first = true;
+            while (ptr != nullptr) {
+                if (!first) {
+                    os << sep;
+                }
+                ptr->print();          // reuse Node’s printer
+                first = false;
+                ptr  = ptr->getNext();
+            }
+        }
     };
 
 
@@ -283,6 +301,9 @@ friend  SortedList< T>;
             return current->getValue();
         }
         ConstIterator& operator++() {
+            if (current == nullptr) {
+                throw std::out_of_range("Increment past end of SortedList");
+            }
             current = current->getNext();
             return *this;
         }
@@ -306,5 +327,6 @@ friend  SortedList< T>;
      * 7. operator!= - returns true if the iterator points to a different element
      *
      */
+
     };
 

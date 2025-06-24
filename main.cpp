@@ -156,6 +156,7 @@ bool testTaskManagerPrintTasksByType()
 
 bool testListBasic()
 {
+    // first test
     // Test default constructor
     SortedList<int> list;
     if (list.length() != 0)
@@ -213,6 +214,7 @@ bool testListBasic()
 
 bool testListExceptions()
 {
+    // secomd
     using mtm::SortedList;
 
     SortedList<int> list;

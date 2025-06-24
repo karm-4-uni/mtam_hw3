@@ -1,17 +1,44 @@
 //
 // Created by Admin on 22/06/2025.
 //
-// #include "Node.h"
+// #include "SortedList.h"
+// int function(const int& i) {
+//     int j = i;
+//     j += 100;
+//     return j ;
+// }
+//
+// bool applay(const int& i) {
+//     return  (i < 100);
+// }
 //
 // int main() {
-//     Node<int>* node = new Node<int>(1) ;
-//     node->add(5);
-//     Node<int>* n2 = node->getNext();
-//     for(int i = 0 ; i < 4 ; i++) {
-//         n2->add(i);
+//    mtm::SortedList<int> list  ;
+//     list.insert(3);
+//     list.insert(1);
+//     list.insert(2);
+//     int i = list[0];
+//    std::cout << i << std::endl ;
+//     auto new_list = list.apply(&function);  // produces {101, 102}
+//
+//    new_list.print();
+//     new_list.insert( 89);
+//     auto newrr_list = new_list.filter(&applay);
+//     newrr_list.print();
+//
+//
+//     std::cout << "List using iterator:\n";
+//
+//     for (auto it = list.begin(); it != list.end(); ++it) {
+//         std::cout << *it << " ";   // dereference and print value
 //     }
-//     while (node->getNext()!=nullptr) {
-//             node->print();
-//         node = node->getNext();
+//     std::cout << "\n";
+//     std::cout << "List using iterator:\n";
+//
+//     for (auto it = list.begin(); it != list.end(); ++it) {
+//         std::cout << *it << " ";   // dereference and print value
 //     }
-// }
+//     std::cout << "\n";
+//
+//     return 0;
+//    }
