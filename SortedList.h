@@ -118,25 +118,55 @@ this->list = new_node ;
     }
 
 }
-        void insert(const T& value){
 
-    Node<T>* node = new Node<T>(value);
-    if (list != nullptr) {
-        list = node; return;
-    }
-    if (list->getValue() > value) {
-        node->setNext(list);
-        list = node;
+        void insert(const T& value)
+{
+    bool inserted = false;
+    Node<T>* new_node = new Node<T>(value);
+
+    if (list == nullptr) {
+        list = new_node;
         return;
     }
-    Node<T>* prev = list;
-    Node<T>* curr = list->getNext();
-    while (curr && !(curr->getValue() > value)) {
-        prev = curr;
+
+    Node<T>* new_list = nullptr;
+    Node<T>* tial = nullptr;
+    Node<T>* curr = list;
+
+    while (curr != nullptr) {
+        const T currvalue = curr->getValue();
+        if (!inserted && currvalue > value) {
+            Node<T>* n = new Node<T>(value);
+            if (!new_list) {
+                new_list = tial = n;
+            } else {
+                tial->setNext(n);
+                tial = n;
+            }
+            inserted = true;
+        }
+
+        Node<T>* n = new Node<T>(curr->getValue());
+        if (!new_list) {
+            new_list = tial = n;
+        } else {
+            tial->setNext(n);
+            tial = n;
+        }
         curr = curr->getNext();
     }
-    prev->setNext(node);
-    node->setNext(curr);
+
+    if (!inserted) {
+        Node<T>* n = new Node<T>(value);
+        if (!new_list) {
+            new_list = n;
+        } else {
+            tial->setNext(n);
+        }
+    }
+
+    clear();
+    list = new_list;
 }
 
 
