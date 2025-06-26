@@ -1,0 +1,63 @@
+Running test 1
+Running testListBasic ... 
+[OK]
+
+Running test 2
+Running testListExceptions ... 
+[OK]
+
+Running test 3
+Running testTaskManager ... 
+Person: Alice
+Task ID: 0, Priority: 1, Type: Meeting, Description: Discuss project goals
+Task ID: 2, Priority: 3, Type: Testing, Description: Test feature X
+
+Person: Bob
+Task ID: 1, Priority: 2, Type: Development, Description: Implement feature X
+Task ID: 4, Priority: 5, Type: Research, Description: Explore new tech
+
+Person: Charlie
+Task ID: 3, Priority: 4, Type: Documentation, Description: Write docs for feature X
+
+
+Task ID: 0, Priority: 1, Type: Meeting, Description: Discuss project goals
+Task ID: 1, Priority: 2, Type: Development, Description: Implement feature X
+Task ID: 2, Priority: 3, Type: Testing, Description: Test feature X
+Task ID: 3, Priority: 4, Type: Documentation, Description: Write docs for feature X
+Task ID: 4, Priority: 5, Type: Research, Description: Explore new tech
+
+Task ID: 1, Priority: 2, Type: Development, Description: Implement feature X
+Task ID: 2, Priority: 3, Type: Testing, Description: Test feature X
+Task ID: 3, Priority: 4, Type: Documentation, Description: Write docs for feature X
+Task ID: 4, Priority: 5, Type: Research, Description: Explore new tech
+
+Task ID: 3, Priority: 4, Type: Documentation, Description: Write docs for feature X
+
+Task ID: 4, Priority: 5, Type: Research, Description: Explore new tech
+
+[OK]
+
+Running test 4
+Running testCopyConstructorExceptionSafety ... 
+[OK]
+
+Running test 5
+Running testTaskManagerAssignTask ... 
+[OK]
+
+Running test 6
+Running testTaskManagerPrintTasksByType ... 
+Task ID: 1, Priority: 5, Type: Development, Description: Refactor core module
+Task ID: 12, Priority: 6, Type: Development, Description: Fix bug in UI
+Task ID: 8, Priority: 7, Type: Development, Description: Implement new feature
+
+Task ID: 1, Priority: 5, Type: Development, Description: Refactor core module
+Task ID: 12, Priority: 6, Type: Development, Description: Fix bug in UI
+Task ID: 8, Priority: 7, Type: Development, Description: Implement new feature
+
+Task ID: 10, Priority: 0, Type: Testing, Description: Write unit tests
+Task ID: 6, Priority: 8, Type: Testing, Description: Integration testing
+Task ID: 11, Priority: 100, Type: Testing, Description: stream
+
+[OK]
+

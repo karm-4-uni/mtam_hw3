@@ -15,7 +15,7 @@ template <typename T>
 class  Node {
     T value;
     Node* next ;
-Status stat;
+Status stat = empty;
 
 public:
     Node() = delete ;
@@ -32,23 +32,27 @@ public:
         }
 
     }
-     Node& operator=(const Node node )  {
-        this,stat = node.stat ;
+
+     Node& operator=(Node* node )  {
+        this->stat = node->stat ;
         if(this->stat == full) {
-          this->value = node.value;
+          this->value = node->getValue();
         }
-        this->next = node.next;
+        this->next = node->next;
         return *this;
 
     }
+
     Node& operator=(const T value )  {
         this->value = value;
         this->next = nullptr;
         stat = full;
         return *this;
     }
+
+
     ~Node() = default;
-    bool operator< (const Node other ) const{
+    bool operator< (const Node& other ) const{
         if (this->stat == empty || other.stat == empty) {
             throw std::logic_error("Cannot compare empty nodes");
         }
@@ -57,7 +61,9 @@ public:
         }
         return  false;
     }
-    bool operator> (const Node other ) const {
+
+
+    bool operator> (const Node& other ) const {
         if (this->stat == empty || other.stat == empty) {
             throw std::logic_error("Cannot compare empty nodes");
         }
@@ -66,33 +72,54 @@ public:
         }
         return  true;
     }
+
+
     void print() const {
         if(stat == full) {
             std::cout << value;
         }
 
     }
+
+
     T& getValue() {
         if(stat == full) {
             return  value;
         }
         throw std::logic_error("Accessing value of empty node");
     }
+    T* getValueptr() {
+        if(stat == full) {
+            return  *value;
+        }
+        throw std::logic_error("Accessing value of empty node");
+    }
+
+
     const T getValue() const {
         if(stat == full) {
             return  value;
         }
         throw std::logic_error("Accessing value of empty node");
     }
+
+
     void setValue( T value) {
         this->value = value ;
         if(stat == empty) {
             stat = full;
         }
     }
+
+
     Node<T>* getNext() {
         return  next;
     }
+
+    const Node<T>* getNext() const {
+        return next;
+    }
+
     void setNext(Node<T>* next)  {
         this->next = next;
     }

@@ -9,6 +9,7 @@
 class TaskManager {
 private:
  SortedList<Person> persons;
+  int id = 0;
     /**
      * @brief Maximum number of persons the TaskManager can handle.
      */
@@ -23,7 +24,7 @@ public:
      * Note - you may add =default if needed.
      */
     TaskManager() = default;
-
+~TaskManager() = default ;
     /**
      * @brief Deleted copy constructor to prevent copying of TaskManager objects.
      */
@@ -73,6 +74,10 @@ public:
      * @brief Prints all tasks assigned to all employees.
      */
     void printAllTasks() const;
+
+void addperson(Person& person);
+
+
 private:
  void printTask(TaskType type , int flag = 0) const;
 };

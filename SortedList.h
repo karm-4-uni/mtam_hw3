@@ -3,7 +3,9 @@
 #include <cassert>
 #include <iostream>
 #include <stdexcept>
-#include  <Node.h>
+#include "Node.h"
+
+
 namespace mtm {
 
     template <typename T>
@@ -12,7 +14,6 @@ namespace mtm {
     class SortedList {
      Node<T>* list ;
        // int size;
-
 
         void clear() {
             Node<T>* curr = list;
@@ -117,50 +118,27 @@ this->list = new_node ;
     }
 
 }
+        void insert(const T& value){
 
-void insert (const T value) {
-    bool inserted = false ;
-    Node<T>* new_node = new Node<T>(value);
-    if (list == nullptr) {
-        list = new_node;
+    Node<T>* node = new Node<T>(value);
+    if (list != nullptr) {
+        list = node; return;
+    }
+    if (list->getValue() > value) {
+        node->setNext(list);
+        list = node;
         return;
     }
-   const T VE = list->getValue();
-    Node<T>* new_list = nullptr;
-    Node<T>* tail = nullptr;
-    Node<T>* curr = list;
-
-    while (curr != nullptr) {
-        if (!inserted && curr->getValue() > value) {
-            Node<T>* n = new Node<T>(value);
-            if (!new_list) new_list = tail = n;
-            else {
-                tail->setNext(n);
-                tail = n;
-            }
-            inserted = true;
-        }
-
-        Node<T>* n = new Node<T>(curr->getValue());
-        if (!new_list) new_list = tail = n;
-        else {
-            tail->setNext(n);
-            tail = n;
-        }
-
+    Node<T>* prev = list;
+    Node<T>* curr = list->getNext();
+    while (curr && !(curr->getValue() > value)) {
+        prev = curr;
         curr = curr->getNext();
     }
-
-    if (!inserted) {
-        Node<T>* n = new Node<T>(value);
-        if (!new_list) new_list = n;
-        else tail->setNext(n);
-    }
-
-    clear();        // delete old list
-    list = new_list;
-
+    prev->setNext(node);
+    node->setNext(curr);
 }
+
 
 
        class ConstIterator;
@@ -170,37 +148,41 @@ void insert (const T value) {
          ConstIterator end() const {
             return ConstIterator( nullptr);
         }
+        ConstIterator begin()  {
+            return ConstIterator(list);
+        }
+        ConstIterator end()  {
+            return ConstIterator( nullptr);
+        }
 
         //* 9. remove - removes an element from the list
  void remove(ConstIterator it) {
             Node<T>* tar = it.current;
-            if (!tar) {
-                throw std::logic_error("Invalid iterator");
+            if (tar == nullptr) {
+                return;
             }
-            Node<T>* new_list ;
-if(tar == list) {
-    new_list = list;
-    list = list->getNext();
-    delete new_list;
-} else {
-    new_list = new Node<T>(list->getValue());
-}
-            Node<T>* ptr_old = list;
-            Node<T>* ptr_new = new_list;
 
-            bool found = false;
-            while ( ptr_old != nullptr) {
-                if ( ptr_old  == tar && !found) {
-                    found = true; // skip this node
-                } else {
-                    ptr_new->add( ptr_old ->getValue());
+            if (tar == list) {
+                Node<T>* del= list;
+                list = list->getNext();
+                delete del;
+                return;
+            }
+
+            Node<T>* oldptr= list;
+            Node<T>* new_list = new Node<T>(oldptr->getValue());
+            Node<T>* ptr_new = new_list;
+            oldptr = oldptr->getNext();
+
+            while (oldptr != nullptr) {
+                if (oldptr != tar) {
+                    ptr_new->setNext(new Node<T>(oldptr->getValue()));
                     ptr_new = ptr_new->getNext();
                 }
-                 ptr_old =  ptr_old ->getNext();
+                oldptr = oldptr->getNext();
             }
             clear();
             list = new_list;
-
         }
 
 
@@ -233,7 +215,6 @@ if(tar == list) {
         T& operator[](int index) {
             if (index < 0 || index >= length()) {
                 throw index;
-                //add expction
             }
             Node<T>* ptr = list;
             for (int i = 0; i < index; ++i) {
@@ -280,9 +261,18 @@ if(tar == list) {
                 if (!first) {
                     os << sep;
                 }
-                ptr->print();          // reuse Node’s printer
+                ptr->print();
                 first = false;
                 ptr  = ptr->getNext();
+            }
+        }
+
+
+        void addtoLst(T& value) {
+            if (!list) {
+                list = new Node<T>(value);
+            } else {
+                list->add(value);
             }
         }
     };
@@ -298,8 +288,12 @@ friend  SortedList< T>;
         ConstIterator& operator=(const ConstIterator&) = default;
         ~ConstIterator() = default;
         const T& operator*() const {
+            if (current == nullptr) {
+                throw std::out_of_range("Dereference of end()");
+            }
             return current->getValue();
         }
+
         ConstIterator& operator++() {
             if (current == nullptr) {
                 throw std::out_of_range("Increment past end of SortedList");
