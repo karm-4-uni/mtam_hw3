@@ -244,7 +244,7 @@ this->list = new_node ;
         list = new_node;
         return;
     }
-
+    delete new_node;
     Node<T>* new_list = nullptr;
     Node<T>* tial = nullptr;
     Node<T>* curr = list;
