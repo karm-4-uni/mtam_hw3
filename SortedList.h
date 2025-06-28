@@ -251,7 +251,7 @@ this->list = new_node ;
 
     while (curr != nullptr) {
         const T currvalue = curr->getValue();
-        if (!inserted && currvalue > value) {
+        if (!inserted && value > currvalue ) {
             Node<T>* n = new Node<T>(value);
             if (!new_list) {
                 new_list = tial = n;

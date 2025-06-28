@@ -37,7 +37,7 @@ void TaskManager::completeTask(const string &personName) {
 }
 
 void TaskManager::bumpPriorityByType(TaskType type, int priority) {
-    if(priority < 0 ) {
+    if(priority > 0 ) {
         int  i = 0 ;
         for (SortedList<Person>::ConstIterator it = persons.begin(); it != persons.end();++it , i++) {
             SortedList<Task>::ConstIterator it2 = (*it).getTasks().begin();
@@ -46,6 +46,7 @@ while (it2 != (*it).getTasks().end() ) {
     if((*it2).getType() == type) {
         Task new_task((*it2).getPriority()+priority,
             (*it2).getType(),(*it2).getDescription());
+        new_task.setId((*it2).getId());
         new_tasks.insert(new_task);
         ++it2;
     } else {
@@ -54,6 +55,7 @@ while (it2 != (*it).getTasks().end() ) {
     }
 }
  persons[i].setTasks(new_tasks);
+
         }
     }   else {
 
