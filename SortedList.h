@@ -124,6 +124,14 @@ public:
     }
 
 };
+
+
+
+
+
+
+
+
     template <typename T>
 
 
@@ -184,7 +192,7 @@ return length;
         if(list != nullptr) {
           clear();
         }
-        Node<T>* S = new Node<T>(other.list->getValue());;
+        Node<T>* S = new Node<T>(other.list->getValue());
         Node<T>* tar = S;
         Node<T>* D = other.list;
         while (D->getNext() != nullptr) {
@@ -288,6 +296,7 @@ this->list = new_node ;
 
 
        class ConstIterator;
+
         ConstIterator begin() const {
             return ConstIterator(list);
         }

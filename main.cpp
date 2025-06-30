@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "TaskManager.h"
 #include "Task.h"
@@ -7,6 +6,7 @@ using std::cout;
 using std::endl;
 
 using mtm::SortedList;
+
 
 typedef bool (*testFunc)(void);
 
@@ -529,5 +529,6 @@ int main(int argc, char **argv)
     }
 
     RUN_TEST(tests[test_idx - 1], tests_names[test_idx - 1]);
+
     return 0;
 }

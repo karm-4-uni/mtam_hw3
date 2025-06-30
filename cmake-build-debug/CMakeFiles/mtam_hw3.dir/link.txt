@@ -1,0 +1,1 @@
+/usr/bin/g++ -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/mtam_hw3.dir/main.cpp.o CMakeFiles/mtam_hw3.dir/Person.cpp.o CMakeFiles/mtam_hw3.dir/Task.cpp.o CMakeFiles/mtam_hw3.dir/TaskManager.cpp.o CMakeFiles/mtam_hw3.dir/maintest.cpp.o -o mtam_hw3
