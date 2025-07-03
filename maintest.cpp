@@ -1,7 +1,6 @@
+
 //
-// Created by Admin on 22/06/2025.
-//
-// #include "SortedList.h"
+// #include "TaskManager.h"
 // int function(const int& i) {
 //     int j = i;
 //     j += 100;
@@ -13,32 +12,43 @@
 // }
 //
 // int main() {
-//    mtm::SortedList<int> list  ;
-//     list.insert(3);
-//     list.insert(1);
-//     list.insert(2);
-//     int i = list[0];
-//    std::cout << i << std::endl ;
-//     auto new_list = list.apply(&function);  // produces {101, 102}
+//     TaskManager tm;
 //
-//    new_list.print();
-//     new_list.insert( 89);
-//     auto newrr_list = new_list.filter(&applay);
-//     newrr_list.print();
+//     // Create some tasks
+//     Task task1(1, TaskType::Meeting, "Discuss project goals");
+//     Task task2(2, TaskType::Development, "Implement feature X");
+//     Task task3(3, TaskType::Testing, "Test feature X");
+//     Task task4(4, TaskType::Documentation, "Write docs for feature X");
+//     Task task5(5, TaskType::Research, "Explore new tech");
 //
+//     // Assign tasks to employees
+//     tm.assignTask("Alice", task1);
+//     tm.assignTask("Bob", task2);
+//     tm.assignTask("Alice", task3);
+//     tm.assignTask("Charlie", task4);
+//     tm.assignTask("Bob", task5);
+//     tm.assignTask("Alice", task2);
+//     tm.printAllEmployees();
+//     std::cout << std::endl;
 //
-//     std::cout << "List using iterator:\n";
+//     tm.printAllTasks();
+//     std::cout << std::endl;
 //
-//     for (auto it = list.begin(); it != list.end(); ++it) {
-//         std::cout << *it << " ";   // dereference and print value
+//     // Complete a task and verify it no longer appears
+//     tm.completeTask("Alice");
+//     tm.completeTask("Alice");
+//     tm.completeTask("Alice");
+//     tm.printAllTasks();
+//     std::cout << std::endl;
+//
+//     tm.bumpPriorityByType(TaskType::Documentation, 2);
+//
+//     tm.printTasksByType(TaskType::Documentation);
+//     std::cout << std::endl;
+//
+//     tm.printTasksByType(TaskType::Research);
+//     std::cout << std::endl;
+//     tm.printAllEmployees();
+//     std::cout << std::endl;
+//     return true;
 //     }
-//     std::cout << "\n";
-//     std::cout << "List using iterator:\n";
-//
-//     for (auto it = list.begin(); it != list.end(); ++it) {
-//         std::cout << *it << " ";   // dereference and print value
-//     }
-//     std::cout << "\n";
-//
-//     return 0;
-//    }

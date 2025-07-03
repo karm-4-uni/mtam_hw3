@@ -99,6 +99,7 @@ void TaskManager::printTask(TaskType type , int flag ) const {
 
 
 void TaskManager::addperson(Person &person) {
+
     SortedList<Person>::ConstIterator it = persons.begin();
     while ( it != persons.end()) {
         if ((*it).getName() == person.getName()) {

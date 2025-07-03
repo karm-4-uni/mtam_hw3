@@ -2,7 +2,7 @@
 
 #include <cassert>
 #include <iostream>
-#include <stdexcept>
+
 
 
 namespace mtm {
@@ -53,7 +53,7 @@ public:
     ~Node() = default;
     bool operator< (const Node& other ) const{
         if (this->stat == empty || other.stat == empty) {
-            throw std::logic_error("Cannot compare empty nodes");
+            throw std::logic_error("Cannot compare empaty nodes");
         }
         if(this->value < other.value) {
             return true;
@@ -64,7 +64,7 @@ public:
 
     bool operator> (const Node& other ) const {
         if (this->stat == empty || other.stat == empty) {
-            throw std::logic_error("Cannot compare empty nodes");
+            throw std::logic_error("Cannot compare empaty nodes");
         }
         if(this->value < other.value) {
             return false;
@@ -85,13 +85,13 @@ public:
         if(stat == full) {
             return  value;
         }
-        throw std::logic_error("Accessing value of empty node");
+        throw std::logic_error("Accessing value of empaty node");
     }
     T* getValueptr() {
         if(stat == full) {
             return  *value;
         }
-        throw std::logic_error("Accessing value of empty node");
+        throw std::logic_error("Accessing value of empaty node");
     }
 
 
@@ -99,7 +99,7 @@ public:
         if(stat == full) {
             return  value;
         }
-        throw std::logic_error("Accessing value of empty node");
+        throw std::logic_error("Accessing value of empaty node");
     }
 
 
@@ -413,7 +413,6 @@ this->list = new_node ;
             }
         }
 
-
         void addtoLst(T& value) {
             if (!list) {
                 list = new Node<T>(value);
@@ -435,7 +434,7 @@ friend  SortedList< T>;
         ~ConstIterator() = default;
         const T& operator*() const {
             if (current == nullptr) {
-                throw std::out_of_range("Dereference of end()");
+                throw std::out_of_range("reach the  end()");
             }
             return current->getValue();
         }
