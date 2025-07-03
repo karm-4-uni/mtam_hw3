@@ -1,0 +1,415 @@
+* commit 65cfde525323aa5394e3fa4eb3938d9ba9140c51
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Thu Jul 3 23:18:43 2025 +0300
+| 
+|     Add dry.pdf report
+| 
+|  Node.h       | 127 --------------
+|  Person.cpp   |  51 ------
+|  Person.h     |  79 ---------
+|  Task.cpp     |  86 ----------
+|  Task.h       | 115 -------------
+|  dry.pdf      | Bin 0 -> 293125 bytes
+|  main.cpp     | 533 ---------------------------------------------------------
+|  maintest.cpp |  54 ------
+|  8 files changed, 1045 deletions(-)
+| 
+* commit 7f63f04792ae7b9a335eed9f890a9f1849f30aca
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Thu Jul 3 23:15:24 2025 +0300
+| 
+|     final
+| 
+|  SortedList.h                                      |  15 ++-
+|  TaskManager.cpp                                   |   1 +
+|  cmake-build-debug/.ninja_deps                     | Bin 89544 -> 104080 bytes
+|  cmake-build-debug/.ninja_log                      | 100 +++++---------------
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 93306 -> 93322 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 136545 -> 136545 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 192878 -> 192878 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 417696 -> 417696 bytes
+|  maintest.cpp                                      |  72 ++++++++------
+|  10 files changed, 75 insertions(+), 117 deletions(-)
+| 
+* commit d100269eba6bbc6f3cdd0bb91cb8347e7c4b2960
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Sun Jun 29 00:04:53 2025 +0300
+| 
+|     fix bumb by piorty (piorty < 0 ) haha
+| 
+|  SortedList.h                                      |   2 +-
+|  TaskManager                                       | Bin 82232 -> 82232 bytes
+|  TaskManager.cpp                                   |   4 ++-
+|  cmake-build-debug/.ninja_deps                     | Bin 84912 -> 89544 bytes
+|  cmake-build-debug/.ninja_log                      |  12 +++++++
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 93258 -> 93306 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 136379 -> 136545 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 192786 -> 192878 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +--
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 417696 -> 417696 bytes
+|  test1.out                                         |  34 ++++++++++----------
+|  vg.log                                            |   6 ----
+|  12 files changed, 35 insertions(+), 27 deletions(-)
+| 
+* commit 94e510b03396af4af9fd7fee86ca4e62c3726f08
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Sat Jun 28 23:35:19 2025 +0300
+| 
+|     fix memory leak from insert
+| 
+|  SortedList.h                                      |   2 +-
+|  TaskManager                                       | Bin 82104 -> 82232 bytes
+|  cmake-build-debug/.ninja_deps                     | Bin 83176 -> 84912 bytes
+|  cmake-build-debug/.ninja_log                      |   4 ++++
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 93312 -> 93258 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 136379 -> 136379 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 192786 -> 192786 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 ++--
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 417696 -> 417696 bytes
+|  9 files changed, 7 insertions(+), 3 deletions(-)
+| 
+* commit 546fc9a9d6a952d7c63232216dd9d46ecae6e77d
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Thu Jun 26 23:18:51 2025 +0300
+| 
+|     moved node to sortedlist
+| 
+|  SortedList.h                                      | 118 +++++++++++++++++++-
+|  cmake-build-debug/.ninja_deps                     | Bin 81428 -> 83176 bytes
+|  cmake-build-debug/.ninja_log                      |   4 +
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 92860 -> 93312 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 135733 -> 136379 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 191844 -> 192786 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 416192 -> 417696 bytes
+|  8 files changed, 123 insertions(+), 3 deletions(-)
+| 
+* commit 03e73a6619fba300b7fd3082cfd0e84be37ac6a2
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Thu Jun 26 23:16:41 2025 +0300
+| 
+|     fine but still memory leak and output diff
+| 
+|  SortedList.h                                      |  58 +++++++++++++++-----
+|  TaskManager                                       | Bin 82104 -> 82104 bytes
+|  cmake-build-debug/.ninja_deps                     | Bin 72712 -> 81428 bytes
+|  cmake-build-debug/.ninja_log                      |  20 +++++++
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 91894 -> 92860 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 134795 -> 135733 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 190260 -> 191844 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 414656 -> 416192 bytes
+|  9 files changed, 66 insertions(+), 16 deletions(-)
+| 
+* commit 4d315187c436ad991c3cd67d2b6147feb5ceb9a4
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Thu Jun 26 22:53:01 2025 +0300
+| 
+|     Code is good memory checked and work still output diff
+| 
+|  Node.h                                            |  41 +++++--
+|  SortedList.h                                      | 116 ++++++++++----------
+|  TaskManager                                       | Bin 65024 -> 82104 bytes
+|  TaskManager.cpp                                   |  46 ++++++--
+|  TaskManager.h                                     |   7 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 33092 -> 72712 bytes
+|  cmake-build-debug/.ninja_log                      |  77 ++++++-------
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 91529 -> 91894 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 106002 -> 134795 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 189862 -> 190260 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 396570 -> 414656 bytes
+|  test1.out                                         |  63 +++++++++++
+|  vg.log                                            |   6 +
+|  14 files changed, 237 insertions(+), 123 deletions(-)
+| 
+* commit 7695a80ea5748032eadb7887a7cc8e2293aac2c0
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Tue Jun 24 23:48:10 2025 +0300
+| 
+|     start testing 1 work  add feww changes
+| 
+|  SortedList.h                                      |  84 ++++++++++++--------
+|  ...97.json => cache-v2-e3e93d0bd11615648136.json} |   2 +-
+|  ...8.json => index-2025-06-24T20-06-03-0381.json} |   4 +-
+|  cmake-build-debug/.ninja_deps                     | Bin 28424 -> 33092 bytes
+|  cmake-build-debug/.ninja_log                      |  62 ++++++++++-----
+|  cmake-build-debug/CMakeCache.txt                  |   2 +-
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |   4 +-
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        | Bin 89346 -> 91529 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   | Bin 106101 -> 106002 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          | Bin 185900 -> 189862 bytes
+|  cmake-build-debug/CMakeFiles/rules.ninja          |   4 +-
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |   4 +-
+|  cmake-build-debug/mtam_hw3.exe                    | Bin 390913 -> 396570 bytes
+|  main.cpp                                          |   2 +
+|  maintest.cpp                                      |  47 ++++++++---
+|  15 files changed, 142 insertions(+), 73 deletions(-)
+| 
+* commit 0be80905689c9cfd7ae21c99f50924cd1ae57b75
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Mon Jun 23 17:10:39 2025 +0300
+| 
+|     Delet dufult Node cons
+| 
+|  Node.h                                            |   19 +-
+|  SortedList.h                                      |   54 +-
+|  cmake-build-debug/.ninja_deps                     |  Bin 21032 -> 28424 bytes
+|  cmake-build-debug/.ninja_log                      |   17 +
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        |  Bin 78736 -> 89346 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   |  Bin 89016 -> 106101 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          |  Bin 733 -> 185900 bytes
+|  .../CMakeFiles/mtam_hw3.dir/maintest.cpp.obj      |  Bin 21845 -> 737 bytes
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    4 +-
+|  cmake-build-debug/mtam_hw3.exe                    |  Bin 356583 -> 390913 bytes
+|  main.cpp                                          | 1062 +++++++++----------
+|  maintest.cpp                                      |   28 +-
+|  12 files changed, 606 insertions(+), 578 deletions(-)
+| 
+* commit 04666d93f76b9643f55147cc16ea6b0179d144ee
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Mon Jun 23 15:16:49 2025 +0300
+| 
+|     Fix ALL functions in sorted list for the new change from array to Node and no size
+| 
+|  CMakeLists.txt                                    |    3 +-
+|  Node.h                                            |  101 ++
+|  SortedList.cpp                                    |    0
+|  SortedList.h                                      |  304 ++++--
+|  ...36.json => cache-v2-3a43df9d4b631897e297.json} |    2 +-
+|  ...son => codemodel-v2-a9a1c0bb159f5546a999.json} |    2 +-
+|  ...0.json => index-2025-06-23T10-49-40-0988.json} |    8 +-
+|  ...rget-mtam_hw3-Debug-2c1c5f44c185364b66a9.json} |   16 +-
+|  cmake-build-debug/.ninja_deps                     |  Bin 27232 -> 21032 bytes
+|  cmake-build-debug/.ninja_log                      |   23 +-
+|  cmake-build-debug/CMakeCache.txt                  |    2 +-
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |    2 +-
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          |  Bin 150087 -> 733 bytes
+|  .../CMakeFiles/mtam_hw3.dir/maintest.cpp.obj      |  Bin 0 -> 21845 bytes
+|  cmake-build-debug/CMakeFiles/rules.ninja          |    4 +-
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    4 +-
+|  cmake-build-debug/build.ninja                     |   10 +-
+|  main.cpp                                          | 1062 +++++++++----------
+|  maintest.cpp                                      |   17 +
+|  19 files changed, 875 insertions(+), 685 deletions(-)
+| 
+* commit ceefc3e804146a6223dc4865f0b8e98dc2b8c223
+| Author: karm <karmhjazi@gmail.com>
+| Date:   Sun Jun 22 13:31:39 2025 +0300
+| 
+|     FIX FEW BUGES
+| 
+|  .idea/.gitignore                                  |   16 +-
+|  .idea/editor.xml                                  | 1158 ++++----
+|  .idea/misc.xml                                    |   24 +-
+|  .idea/modules.xml                                 |   14 +-
+|  .idea/mtam_hw3.iml                                |    2 +-
+|  .idea/vcs.xml                                     |   10 +-
+|  Person.cpp                                        |  102 +-
+|  Person.h                                          |  158 +-
+|  SortedList.cpp                                    |  156 --
+|  SortedList.h                                      |  315 ++-
+|  Task.cpp                                          |  172 +-
+|  Task.h                                            |  230 +-
+|  TaskManager                                       |  Bin 0 -> 65024 bytes
+|  TaskManager.cpp                                   |  172 +-
+|  TaskManager.h                                     |  156 +-
+|  .../v1/reply/cache-v2-e3e93d0bd11615648136.json   | 2654 +++++++++----------
+|  .../reply/cmakeFiles-v1-8cef8866f7bbfccfce5d.json |  330 +--
+|  .../reply/codemodel-v2-5c35d4e9ce5c1af76f2b.json  |  120 +-
+|  .../directory-.-Debug-d0094a50bb2071803777.json   |   28 +-
+|  .../v1/reply/index-2025-06-20T20-22-39-0350.json  |  216 +-
+|  ...arget-mtam_hw3-Debug-787d4e187ad10bb3ad0c.json |  364 +--
+|  .../reply/toolchains-v1-8ce3f78fc5758414dfe9.json |  186 +-
+|  cmake-build-debug/.ninja_deps                     |  Bin 0 -> 27232 bytes
+|  cmake-build-debug/.ninja_log                      |   24 +
+|  cmake-build-debug/CMakeCache.txt                  |  830 +++---
+|  .../CMakeFiles/3.29.6/CMakeCCompiler.cmake        |  160 +-
+|  .../CMakeFiles/3.29.6/CMakeCXXCompiler.cmake      |  184 +-
+|  .../CMakeFiles/3.29.6/CMakeRCCompiler.cmake       |   12 +-
+|  .../CMakeFiles/3.29.6/CMakeSystem.cmake           |   30 +-
+|  .../3.29.6/CompilerIdC/CMakeCCompilerId.c         | 1790 ++++++-------
+|  .../3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp   | 1756 ++++++------
+|  .../CMakeFiles/CMakeConfigureLog.yaml             |  908 +++----
+|  .../CMakeFiles/TargetDirectories.txt              |    6 +-
+|  cmake-build-debug/CMakeFiles/cmake.check_cache    |    2 +-
+|  .../CMakeFiles/mtam_hw3.dir/Person.cpp.obj        |  Bin 0 -> 78736 bytes
+|  .../CMakeFiles/mtam_hw3.dir/SortedList.cpp.obj    |  Bin 0 -> 741 bytes
+|  .../CMakeFiles/mtam_hw3.dir/Task.cpp.obj          |  Bin 0 -> 62217 bytes
+|  .../CMakeFiles/mtam_hw3.dir/TaskManager.cpp.obj   |  Bin 0 -> 89016 bytes
+|  .../CMakeFiles/mtam_hw3.dir/main.cpp.obj          |  Bin 0 -> 150087 bytes
+|  cmake-build-debug/CMakeFiles/rules.ninja          |  128 +-
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    6 +-
+|  cmake-build-debug/build.ninja                     |  350 +--
+|  cmake-build-debug/cmake_install.cmake             |   98 +-
+|  cmake-build-debug/mtam_hw3.exe                    |  Bin 0 -> 356583 bytes
+|  main.cpp                                          | 1062 ++++----
+|  tests/test1.expected                              |    6 +-
+|  tests/test2.expected                              |    6 +-
+|  tests/test3.expected                              |   60 +-
+|  tests/test4.expected                              |    6 +-
+|  tests/test5.expected                              |    6 +-
+|  tests/test6.expected                              |   30 +-
+|  51 files changed, 7018 insertions(+), 7025 deletions(-)
+| 
+* commit 54c525379373835f5b59700ec4ea1bc1f902bc19
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Sat Jun 21 22:35:41 2025 +0300
+| 
+|     Add all printig function to TaskManager
+| 
+|  TaskManager.cpp | 35 +++++++++++++++++++++++++++++++++++
+|  TaskManager.h   |  2 ++
+|  2 files changed, 37 insertions(+)
+| 
+* commit 5274fd67d61a9872dac1669017ac53035ccdfd37
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Sat Jun 21 21:39:35 2025 +0300
+| 
+|     Add bumpPriorityByType function
+| 
+|  TaskManager.cpp | 24 ++++++++++++++++++++++++
+|  1 file changed, 24 insertions(+)
+| 
+* commit f1b9868da908e3d6e7202c340b2489563b29f2ba
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Sat Jun 21 19:40:05 2025 +0300
+| 
+|     Add assignTask and completeTask functions
+| 
+|  CMakeLists.txt                                    |  1 +
+|  SortedList.cpp                                    | 11 ++++++++-
+|  SortedList.h                                      |  2 ++
+|  TaskManager.cpp                                   | 27 +++++++++++++++++++++
+|  TaskManager.h                                     |  5 ++--
+|  ...son => codemodel-v2-5c35d4e9ce5c1af76f2b.json} |  2 +-
+|  ...0.json => index-2025-06-20T20-22-39-0350.json} |  4 +--
+|  ...rget-mtam_hw3-Debug-787d4e187ad10bb3ad0c.json} | 12 +++++----
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |  2 +-
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |  4 +--
+|  cmake-build-debug/build.ninja                     |  9 ++++++-
+|  11 files changed, 64 insertions(+), 15 deletions(-)
+| 
+* commit 3360979afbb038fb4a73b438afb10c9594d5d560
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Fri Jun 20 23:15:58 2025 +0300
+| 
+|     Add applay function / feinch sortedlist
+| 
+|  SortedList.cpp | 12 +++++++++++-
+|  SortedList.h   |  1 +
+|  2 files changed, 12 insertions(+), 1 deletion(-)
+| 
+* commit fdf8fc41cb521c7379ed5c757ee22675b3b3f336
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Fri Jun 20 16:35:39 2025 +0300
+| 
+|     Remove&fix/Add  remove super pinter and fix all the problem that come from that / add the function filter
+| 
+|  .idea/editor.xml                                 | 239 +++++++++++++++++++++
+|  .idea/misc.xml                                   |   1 +
+|  CMakeLists.txt                                   |   1 -
+|  SortedList.cpp                                   |  78 +++++--
+|  SortedList.h                                     |   7 +-
+|  Super_ptr.h                                      |  44 ----
+|  cmake-build-debug/Testing/Temporary/LastTest.log |   4 +-
+|  7 files changed, 303 insertions(+), 71 deletions(-)
+| 
+* commit 1dc495fe49e860de6f5bae6fed0b12f1b5b7559c
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Sat Jun 14 20:45:32 2025 +0300
+| 
+|     add iterator to sortedlist
+| 
+|  SortedList.cpp | 18 ++++++++++++++----
+|  SortedList.h   | 22 ++++++++++++++++++++--
+|  2 files changed, 34 insertions(+), 6 deletions(-)
+| 
+* commit 7f1297d59fc6020c55a0fa2fb53e4d29f8d6525f
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Sat Jun 14 19:56:46 2025 +0300
+| 
+|     add operator [] to super pointer and start working on Sorted list
+| 
+|  CMakeLists.txt                                    |  1 +
+|  SortedList.cpp                                    | 93 +++++++++++++++++++++
+|  SortedList.h                                      | 14 ++--
+|  Super_ptr.h                                       |  8 ++
+|  ...son => codemodel-v2-04d8566f0bd4e5365d45.json} |  2 +-
+|  ...3.json => index-2025-06-14T08-56-22-0950.json} |  4 +-
+|  ...rget-mtam_hw3-Debug-dc021519d869b5650796.json} |  2 +-
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |  2 +-
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |  4 +-
+|  cmake-build-debug/build.ninja                     |  6 +-
+|  10 files changed, 121 insertions(+), 15 deletions(-)
+| 
+* commit 078f301059b9aef2ebc4d25707b3a23badda1433
+| Author: karm-4-uni <karm.hijazi@campus.technion.ac.il>
+| Date:   Sat Jun 14 09:00:38 2025 +0300
+| 
+|     start add full Super_ptr
+| 
+|  .idea/.gitignore                                  |    8 +
+|  .idea/editor.xml                                  |  341 +++++
+|  .idea/misc.xml                                    |   12 +
+|  .idea/modules.xml                                 |    8 +
+|  .idea/mtam_hw3.iml                                |    2 +
+|  .idea/vcs.xml                                     |    6 +
+|  CMakeLists.txt                                    |   17 +
+|  SortedList.h                                      |   10 +
+|  Super_ptr.h                                       |   36 +
+|  cmake-build-debug/.cmake/api/v1/query/cache-v2    |    0
+|  .../.cmake/api/v1/query/cmakeFiles-v1             |    0
+|  .../.cmake/api/v1/query/codemodel-v2              |    0
+|  .../.cmake/api/v1/query/toolchains-v1             |    0
+|  .../v1/reply/cache-v2-e3e93d0bd11615648136.json   | 1327 +++++++++++++++++++
+|  .../reply/cmakeFiles-v1-8cef8866f7bbfccfce5d.json |  165 +++
+|  .../reply/codemodel-v2-df652bae7d1381d29dbf.json  |   60 +
+|  .../directory-.-Debug-d0094a50bb2071803777.json   |   14 +
+|  .../v1/reply/index-2025-06-14T05-45-12-0113.json  |  108 ++
+|  ...arget-mtam_hw3-Debug-4876ac53a75d7c28c9ec.json |  180 +++
+|  .../reply/toolchains-v1-8ce3f78fc5758414dfe9.json |   93 ++
+|  cmake-build-debug/CMakeCache.txt                  |  415 ++++++
+|  .../CMakeFiles/3.29.6/CMakeCCompiler.cmake        |   80 ++
+|  .../CMakeFiles/3.29.6/CMakeCXXCompiler.cmake      |   92 ++
+|  .../3.29.6/CMakeDetermineCompilerABI_C.bin        |  Bin 0 -> 43069 bytes
+|  .../3.29.6/CMakeDetermineCompilerABI_CXX.bin      |  Bin 0 -> 43088 bytes
+|  .../CMakeFiles/3.29.6/CMakeRCCompiler.cmake       |    6 +
+|  .../CMakeFiles/3.29.6/CMakeSystem.cmake           |   15 +
+|  .../3.29.6/CompilerIdC/CMakeCCompilerId.c         |  895 +++++++++++++
+|  .../CMakeFiles/3.29.6/CompilerIdC/a.exe           |  Bin 0 -> 43144 bytes
+|  .../3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp   |  878 ++++++++++++
+|  .../CMakeFiles/3.29.6/CompilerIdCXX/a.exe         |  Bin 0 -> 43172 bytes
+|  .../CMakeFiles/CMakeConfigureLog.yaml             |  454 +++++++
+|  .../CMakeFiles/TargetDirectories.txt              |    3 +
+|  cmake-build-debug/CMakeFiles/clion-Debug-log.txt  |    4 +
+|  .../CMakeFiles/clion-environment.txt              |  Bin 0 -> 296 bytes
+|  cmake-build-debug/CMakeFiles/cmake.check_cache    |    1 +
+|  cmake-build-debug/CMakeFiles/rules.ninja          |   64 +
+|  cmake-build-debug/Testing/Temporary/LastTest.log  |    3 +
+|  cmake-build-debug/build.ninja                     |  168 +++
+|  cmake-build-debug/cmake_install.cmake             |   49 +
+|  40 files changed, 5514 insertions(+)
+| 
+* commit d574ed91189f2e4bd2f8869d7fe4ffc909f576ec
+  Author: Ron Raphaeli <102682845+ronraphaeli@users.noreply.github.com>
+  Date:   Tue Jun 3 19:16:50 2025 +0300
+  
+      Add files via upload
+  
+   Person.cpp           |  51 +++++
+   Person.h             |  79 ++++++++
+   README.md            |   6 +
+   SortedList.h         |  57 ++++++
+   Task.cpp             |  86 ++++++++
+   Task.h               | 115 +++++++++++
+   TaskManager.h        |  75 +++++++
+   main.cpp             | 531 +++++++++++++++++++++++++++++++++++++++++++++++++
+   tests/test1.expected |   3 +
+   tests/test2.expected |   3 +
+   tests/test3.expected |  30 +++
+   tests/test4.expected |   3 +
+   tests/test5.expected |   3 +
+   tests/test6.expected |  15 ++
+   14 files changed, 1057 insertions(+)
